@@ -24,8 +24,9 @@ public class Main {
 //        short year = 1784;
 //        short year = 1984;
 //        short year = 2020;
-        short year = 2021;
+//        short year = 2021;
 //        short year = 2024;
+        short year = 2000;
         int diff = year - 1584;
 
         if (diff >= 0 && diff % 400 == 0) {
@@ -49,7 +50,7 @@ public class Main {
             System.out.println("Потребуется дней: 1");
         } else if (deliveryDistance >= 20 && deliveryDistance < 60) {
             System.out.println("Потребуется дней: 2");
-        } else if (deliveryDistance >= 60 && deliveryDistance < 100) {
+        } else if (deliveryDistance >= 60 && deliveryDistance <= 100) {
             System.out.println("Потребуется дней: 3");
         } else {
             System.out.println("Доставки нет");
@@ -66,8 +67,8 @@ public class Main {
 //        byte monthNumber = 9;
 //        byte monthNumber = 10;
 //        byte monthNumber = 11;
-//        byte monthNumber = 12;
-        byte monthNumber = 44;
+        byte monthNumber = 12;
+//        byte monthNumber = 44;
         switch (monthNumber) {
             case 12:
             case 1:
