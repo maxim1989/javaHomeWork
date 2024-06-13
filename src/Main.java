@@ -57,7 +57,7 @@ public class Main {
         int percentsByMonth = 7;
 
         while (deposit < target) {
-            deposit = deposit + (deposit / 100) * percentsByMonth;
+            deposit += (deposit / 100) * percentsByMonth;
             System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             month++;
         }
@@ -71,7 +71,7 @@ public class Main {
         int period = 6;
 
         while (deposit < target) {
-            deposit = deposit + (deposit / 100) * percentsByMonth;
+            deposit += (deposit / 100) * percentsByMonth;
             if (month % period == 0) {
                 System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             }
@@ -87,7 +87,7 @@ public class Main {
         int percentsByMonth = 7;
 
         while (month <= totalMonths) {
-            deposit = deposit + (deposit / 100) * percentsByMonth;
+            deposit += (deposit / 100) * percentsByMonth;
             if (month % period == 0) {
                 System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             }
