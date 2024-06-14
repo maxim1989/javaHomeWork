@@ -115,7 +115,7 @@ public class Main {
         int startYear = currentYear - 200;
         int endYear = currentYear + 100;
         final int PERIOD = 79;
-        for (int i = 0; i <= endYear; i++) {
+        for (int i = 0; i <= endYear; i = i + PERIOD) {
             if (i % PERIOD == 0 && i >= startYear) {
                 System.out.println(i);
             }
