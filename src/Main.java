@@ -12,13 +12,14 @@ public class Main {
 
     public static void task1() {
         int deposit = 15_000;
-        int resultSum = 0;
+        float resultSum = 0f;
         int month = 1;
         final int TARGET = 2_459_000;
 
         while (resultSum < TARGET) {
-            resultSum += deposit + (resultSum + deposit) / 100;
-            System.out.printf("Месяц %d, сумма накоплений равна %d рублей\n", month++, resultSum);
+            float percents = (resultSum + deposit) / 100;
+            resultSum += deposit + percents;
+            System.out.printf("Месяц %d, сумма накоплений равна %f рублей\n", month++, resultSum);
         }
     }
 
@@ -57,7 +58,8 @@ public class Main {
         final int PERCENTS_BY_MONTH = 7;
 
         while (deposit < TARGET) {
-            deposit += (deposit / 100) * PERCENTS_BY_MONTH;
+            float percents = (deposit / 100) * PERCENTS_BY_MONTH;
+            deposit += percents;
             System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             month++;
         }
@@ -71,7 +73,8 @@ public class Main {
         final int PERIOD = 6;
 
         while (deposit < TARGET) {
-            deposit += (deposit / 100) * PERCENTS_BY_MONTH;
+            float percents = (deposit / 100) * PERCENTS_BY_MONTH;
+            deposit += percents;
             if (month % PERIOD == 0) {
                 System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             }
@@ -87,7 +90,8 @@ public class Main {
         final int PERCENTS_BY_MONTH = 7;
 
         while (month <= TOTAL_MONTHS) {
-            deposit += (deposit / 100) * PERCENTS_BY_MONTH;
+            float percents = (deposit / 100) * PERCENTS_BY_MONTH;
+            deposit += percents;
             if (month % PERIOD == 0) {
                 System.out.printf("Месяц %d, сумма %f\n", month, deposit);
             }
