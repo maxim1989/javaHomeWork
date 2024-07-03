@@ -34,13 +34,7 @@ public class Book {
     }
 
     public boolean equals(Book book) {
-        return Objects.equals(
-                this.getAuthor(),
-                book.getAuthor()
-        ) && Objects.equals(
-                this.getName(),
-                book.getName()
-        ) && this.getYear() == book.getYear();
+        return Objects.equals(this.toString(), book.toString());
     }
 
     public int hashCode() {
