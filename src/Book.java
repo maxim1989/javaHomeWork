@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Book {
     private String name;
     private Author author;
@@ -34,7 +32,7 @@ public class Book {
     }
 
     public boolean equals(Book book) {
-        return Objects.equals(this.toString(), book.toString());
+        return this.toString().equals(book.toString());
     }
 
     public int hashCode() {

@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Author {
     private String name;
     private String surname;
@@ -22,13 +20,8 @@ public class Author {
     }
 
     public boolean equals(Author author) {
-        return Objects.equals(
-                this.getName(),
-                author.getName()
-        ) && Objects.equals(
-                this.getSurname(),
-                author.getSurname()
-        );
+        return this.getName().equals(author.getName())
+                && this.getSurname().equals(author.getSurname());
     }
 
     public int hashCode() {
