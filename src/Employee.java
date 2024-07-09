@@ -103,6 +103,6 @@ public class Employee {
                 ", department=" + department +
                 ", salary=" + salary +
                 ", id=" + id +
-                '}';
+                "}";
     }
 }
