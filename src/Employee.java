@@ -1,28 +1,27 @@
 import java.util.Objects;
 
 public class Employee {
+    private final int id;
     private String name;
     private String surname;
     private String secondName;
     private int department;
-    private float salary;
-    private static int idCounter = 1;
-    private final int id;
+    private double salary;
+    private static int idCounter;
 
     public Employee(
             String name,
             String surname,
             String secondName,
             int department,
-            float salary
+            double salary
     ) {
+        this.id = ++idCounter;
         this.name = name;
         this.surname = surname;
         this.secondName = secondName;
         this.department = department;
         this.salary = salary;
-        this.id = idCounter;
-        idCounter += 1;
     }
 
     public String getName() {
@@ -57,20 +56,16 @@ public class Employee {
         this.department = department;
     }
 
-    public float getSalary() {
+    public double getSalary() {
         return salary;
     }
 
-    public void setSalary(float salary) {
+    public void setSalary(double salary) {
         this.salary = salary;
     }
 
     public static int getIdCounter() {
         return idCounter;
-    }
-
-    public static void setIdCounter(int idCounter) {
-        Employee.idCounter = idCounter;
     }
 
     public int getId() {
@@ -82,27 +77,33 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department
-                && Float.compare(salary, employee.salary) == 0
-                && id == employee.id && Objects.equals(name, employee.name)
-                && Objects.equals(surname, employee.surname)
-                && Objects.equals(secondName, employee.secondName);
+        return id == employee.id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surname, secondName, department, salary, id);
+        return Objects.hashCode(id);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "name='" + name + '\'' +
+                "id=" + id +
+                ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", secondName='" + secondName + '\'' +
                 ", department=" + department +
                 ", salary=" + salary +
-                ", id=" + id +
-                "}";
+                '}';
+    }
+
+    public String toStringWithoutDepartment() {
+        return "Employee{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", secondName='" + secondName + '\'' +
+                ", salary=" + salary +
+                '}';
     }
 }
