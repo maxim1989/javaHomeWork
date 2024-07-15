@@ -98,7 +98,7 @@ public class EmployeeBook {
         }
 
         if (employeesAmount == 0) {
-            return employeesAmount;
+            return 0;
         }
 
         return monthSalary / employeesAmount;
@@ -175,7 +175,7 @@ public class EmployeeBook {
         }
 
         if (employeesAmount == 0) {
-            return employeesAmount;
+            return 0;
         }
 
         return monthSalary / employeesAmount;
