@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class Hogwarts {
     private final String name;
     private int magicPower;
