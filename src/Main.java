@@ -1,7 +1,7 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Создать EmployeeBook длигой 10");
-        EmployeeBook employeeBook = new EmployeeBook(10);
+        System.out.println("Создать EmployeeBook");
+        EmployeeBook employeeBook = new EmployeeBook();
         System.out.println("-------------------");
         System.out.println("Добавить Employee 1");
         System.out.println(employeeBook.addEmployee(new Employee("Name1", "Surname1", "SecondName1", 1, 20000)));
@@ -33,7 +33,7 @@ public class Main {
         System.out.println("Добавить Employee 10");
         System.out.println(employeeBook.addEmployee(new Employee("Name10", "Surname10", "SecondName10", 5, 16000)));
         System.out.println("-------------------");
-        System.out.println("Добавить Employee 11 (он не должен быть добавлен, т. к. места нет)");
+        System.out.println("Добавить Employee 11");
         System.out.println(employeeBook.addEmployee(new Employee("Name11", "Surname11", "SecondName11", 5, 16000)));
         System.out.println("-------------------");
         System.out.println("Удалить Employee 10");

@@ -1,43 +1,41 @@
-public class EmployeeBook {
-    private final Employee[] employees;
+import java.util.HashMap;
+import java.util.Map;
 
-    public EmployeeBook(int size) {
-        this.employees = new Employee[size];
+public class EmployeeBook {
+    private final Map<Integer, Employee> employees;
+
+    public EmployeeBook() {
+        this.employees = new HashMap<>();
     }
 
     public boolean addEmployee(Employee employee) {
-        for (int i = 0; i < employees.length; i++) {
-            if (employees[i] == null) {
-                employees[i] = employee;
-                return true;
-            }
+        final Integer uid = employee.getId();
+        if (!employees.containsKey(uid)) {
+            employees.put(uid, employee);
+            return true;
         }
         return false;
     }
 
-    public Employee removeEmployeeById(int id) {
-        for (int i = 0; i < employees.length; i++) {
-            Employee employee = employees[i];
-            if (employee != null && employee.getId() == id) {
-                employees[i] = null;
-                return employee;
-            }
+    public Employee removeEmployeeById(Integer id) {
+        if (employees.containsKey(id)) {
+            final Employee employee = employees.get(id);
+            employees.remove(id);
+            return employee;
         }
 
         return null;
     }
 
     public Employee getEmployeeById(int id) {
-        for (Employee employee : employees) {
-            if (employee != null && employee.getId() == id) {
-                return employee;
-            }
+        if (employees.containsKey(id)) {
+            return employees.get(id);
         }
         return null;
     }
 
     public void printAllEmployees() {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 System.out.println(employee);
             }
@@ -46,7 +44,7 @@ public class EmployeeBook {
 
     public double calculateMonthSalaryForAllEmployees() {
         double monthSalary = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 monthSalary += employee.getSalary();
             }
@@ -59,7 +57,7 @@ public class EmployeeBook {
         Employee employeeWithMinSalary = null;
         double minSalary = -1;
 
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 double currentSalary = employee.getSalary();
                 if (minSalary < 0 || minSalary > 0 && minSalary > currentSalary) {
@@ -75,7 +73,7 @@ public class EmployeeBook {
     public Employee findFirstEmployeeWithMaxSalary() {
         Employee employeeWithMaxSalary = null;
         double maxSalary = -1;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 double currentSalary = employee.getSalary();
                 if (maxSalary < currentSalary) {
@@ -90,7 +88,7 @@ public class EmployeeBook {
     public double calculateMediumSalary() {
         int employeesAmount = 0;
         double monthSalary = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 employeesAmount++;
                 monthSalary += employee.getSalary();
@@ -105,7 +103,7 @@ public class EmployeeBook {
     }
 
     public void printAllEmployeesFio() {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 System.out.println(employee.getSurname() + " " + employee.getName() + " " + employee.getSecondName());
             }
@@ -113,7 +111,7 @@ public class EmployeeBook {
     }
 
     public void indexSalary(double percent) {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null) {
                 double currentSalary = employee.getSalary();
                 employee.setSalary(currentSalary + (currentSalary * percent) / 100);
@@ -125,7 +123,7 @@ public class EmployeeBook {
         Employee employeeWithMinSalary = null;
         double minSalary = -1;
 
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 double currentSalary = employee.getSalary();
                 if (minSalary < 0 || minSalary > 0 && minSalary > currentSalary) {
@@ -141,7 +139,7 @@ public class EmployeeBook {
     public Employee findFirstEmployeeWithMaxSalaryByDepartment(int department) {
         Employee employeeWithMaxSalary = null;
         double maxSalary = -1;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 double currentSalary = employee.getSalary();
                 if (maxSalary < currentSalary) {
@@ -155,7 +153,7 @@ public class EmployeeBook {
 
     public double calculateMonthSalaryForDepartment(int department) {
         double monthSalary = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 monthSalary += employee.getSalary();
             }
@@ -167,7 +165,7 @@ public class EmployeeBook {
     public double calculateMediumSalaryByDepartment(int department) {
         int employeesAmount = 0;
         double monthSalary = 0;
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 monthSalary += employee.getSalary();
                 employeesAmount++;
@@ -182,7 +180,7 @@ public class EmployeeBook {
     }
 
     public void indexSalaryByDepartment(float percent, int department) {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 double currentSalary = employee.getSalary();
                 employee.setSalary(currentSalary + (currentSalary * percent) / 100);
@@ -191,7 +189,7 @@ public class EmployeeBook {
     }
 
     public void printEmployeesByDepartment(int department) {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getDepartment() == department) {
                 System.out.println(employee.toStringWithoutDepartment());
             }
@@ -199,7 +197,7 @@ public class EmployeeBook {
     }
 
     public void printEmployeesWithLessSalary(double salary) {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getSalary() < salary) {
                 System.out.println(employee.toStringWithoutDepartment());
             }
@@ -207,7 +205,7 @@ public class EmployeeBook {
     }
 
     public void printEmployeesWithMaxSalary(double salary) {
-        for (Employee employee : employees) {
+        for (Employee employee : employees.values()) {
             if (employee != null && employee.getSalary() >= salary) {
                 System.out.println(employee.toStringWithoutDepartment());
             }
